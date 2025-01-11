@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo list</title>
+</head>
+<body>
+  <input id="todo-list" type="text" placeholder="Todo name">
+  <input type="date" id="date">
+  <button onclick="one()">Add</button>
+  <h2 id="paragraph"></h2>
+  <div id="selector3"></div>
+
+  <script>
+    const selector1 = document.querySelector('#todo-list');
+    const selector3 = document.getElementById('selector3');
+    const array = [];
+
+    function one() {
+      array.push(selector1.value);
+      console.log(array);
+      selector1.value = '';
+      two();
+    }
+
+    function two() {
+      let todosHTML = '';
+      for (let i = 0; i < array.length; i++) {
+        let todo = array[i];
+        todosHTML += `<p>${todo}<button onclick="array.splice(${i},1);two();">Delete</button></p>`;
+      }
+      selector3.innerHTML = todosHTML;
+    }
+  </script>
+</body>
+</html>
